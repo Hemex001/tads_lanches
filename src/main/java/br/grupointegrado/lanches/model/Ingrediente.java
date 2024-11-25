@@ -13,6 +13,13 @@ public class Ingrediente {
     @Column
     private String descricao;
 
+    @ManyToOne
+    @JoinColumn(name = "produto_id", referencedColumnName = "id")
+    private Produto produto;
+
+
+
+
     public Integer getId() {
         return id;
     }
@@ -27,5 +34,13 @@ public class Ingrediente {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 }
