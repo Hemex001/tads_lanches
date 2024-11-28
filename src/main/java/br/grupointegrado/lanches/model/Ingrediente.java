@@ -17,9 +17,6 @@ public class Ingrediente {
     @JoinColumn(name = "produto_id", referencedColumnName = "id")
     private Produto produto;
 
-
-
-
     public Integer getId() {
         return id;
     }

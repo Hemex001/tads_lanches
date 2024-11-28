@@ -12,7 +12,6 @@ public class PedidoProdutoPK {
     @Column(name = "produto_id")
     private Integer produtoId;
 
-
     public Integer getPedidoId() {
         return pedidoId;
     }
@@ -29,5 +28,4 @@ public class PedidoProdutoPK {
         this.produtoId = produtoId;
     }
 }
-
 

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,14 +22,12 @@ public class Produto {
     @Column(precision = 2)
     private BigDecimal valor;
 
-    @Column(length = 500)
+    @Column
     private String descricao;
 
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("produto")
     private List<Ingrediente> ingredientes;
-
-
 
     public Integer getId() {
         return id;
@@ -67,6 +66,9 @@ public class Produto {
     }
 
     public void setIngredientes(List<Ingrediente> ingredientes) {
+        if (this.ingredientes == null) {
+            this.ingredientes = new ArrayList<>();
+        }
         this.ingredientes = ingredientes;
     }
 }

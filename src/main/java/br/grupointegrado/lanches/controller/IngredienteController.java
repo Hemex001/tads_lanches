@@ -23,11 +23,12 @@ public class IngredienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Ingrediente> save (@RequestBody String descricao) {
+    public ResponseEntity<Ingrediente> save(@RequestBody String descricao) {
         Ingrediente ingrediente = new Ingrediente();
         ingrediente.setDescricao(descricao);
         this.repository.save(ingrediente);
 
         return ResponseEntity.ok(ingrediente);
     }
+
 }

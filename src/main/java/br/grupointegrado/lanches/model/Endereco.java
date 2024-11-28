@@ -14,7 +14,6 @@ public class Endereco {
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private Cliente cliente;
 
-
     private String logradouro;
 
     private String cidade;

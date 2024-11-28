@@ -1,6 +1,7 @@
 package br.grupointegrado.lanches.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -21,17 +22,14 @@ public class PedidoProduto {
     @ManyToOne
     @MapsId("produtoId")
     @JoinColumn(name = "produto_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("ingredientes")
     private Produto produto;
-
-    @OneToMany(mappedBy = "pedido")
-    private List<PedidoProduto> pedidoProdutos;
 
     @Column(name = "valor")
     private BigDecimal valorUnitario;
 
     @Column
     private BigDecimal quantidade;
-
 
     public PedidoProdutoPK getId() {
         return id;
@@ -40,23 +38,6 @@ public class PedidoProduto {
     public void setId(PedidoProdutoPK id) {
         this.id = id;
     }
-
-    public BigDecimal getValorUnitario() {
-        return valorUnitario;
-    }
-
-    public void setValorUnitario(BigDecimal valorUnitario) {
-        this.valorUnitario = valorUnitario;
-    }
-
-    public BigDecimal getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(BigDecimal quantidade) {
-        this.quantidade = quantidade;
-    }
-
 
     public Pedido getPedido() {
         return pedido;
@@ -74,11 +55,19 @@ public class PedidoProduto {
         this.produto = produto;
     }
 
-    public List<PedidoProduto> getPedidoProdutos() {
-        return pedidoProdutos;
+    public BigDecimal getValorUnitario() {
+        return valorUnitario;
     }
 
-    public void setPedidoProdutos(List<PedidoProduto> pedidoProdutos) {
-        this.pedidoProdutos = pedidoProdutos;
+    public void setValorUnitario(BigDecimal valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
+
+    public BigDecimal getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(BigDecimal quantidade) {
+        this.quantidade = quantidade;
     }
 }
